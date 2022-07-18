@@ -1,0 +1,105 @@
+{
+  "data": [
+    {
+      "quest": "React is mainly used for building ___.",
+      "choices": [
+        "Database",
+        "Connectivity",
+        "User interface",
+        "Design Platform"
+      ],
+      "answer": "User interface"
+    },
+    {
+      "quest": "Which of the following command is used to create react-js-app ?",
+      "choices": [
+        "npx create-react-app appname",
+        "npm install create-react-app",
+        "npx install create-react-app -g",
+        "install - l create-react-app"
+      ],
+      "answer": "npx create-react-app appname"
+    },
+    {
+      "quest": "Which is the right way of accessing a function fetch() from an h1 element in JSX?",
+      "choices": [
+        "<h1>{fetch()}</h1>",
+        "<h1>${fetch()}</h1>",
+        "<h1>{fetch}</h1>",
+        "<h1>${fetch}</h1>"
+      ],
+      "answer": "<h1>{fetch()}</h1>"
+    },
+    {
+      "quest": "Which of the following methods in a React Component should be overridden to stop the component from updating? ",
+      "choices": [
+        "willComponentUpdate",
+        "shouldComponentUpdate",
+        "componentDidUpdate",
+        "componentDidMount"
+      ],
+      "answer": "shouldComponentUpdates"
+    },
+    {
+        "quest": "What is used to pass data to a component from outside?",
+        "choices": [
+          "setState",
+          "render with arguments",
+          "PropTypes",
+          "props"
+        ],
+        "answer": "props"
+      },
+      {
+        "quest": "Which of the following methods in a React Component is called after the component is rendered for the first time?",
+        "choices": [
+          "componentDidUpdate",
+          "componentDidMount",
+          "componentMounted",
+          "componentUpdated"
+        ],
+        "answer": "componentMounted"
+      },
+      {
+        "quest": "Which of the following is the correct syntax for a button click event handler foo?",
+        "choices": [
+          "<button onclick={this.foo()}>",
+          "<button onclick={this.foo}>",
+          "<button onClick={this.foo()}>",
+          "<button onClick={this.foo}>"
+        ],
+        "answer": "<button onClick={this.foo}>" 
+      },
+      {
+        "quest": "Everything in React is a _____________",
+        "choices": [
+          "Module",
+          "Component",
+          "Package",
+          "Class"
+        ],
+        "answer": "Component"
+      },
+      {
+        "quest": "In which directory React Components are saved?",
+        "choices": [
+          "Inside js/components/",
+          "Inside vendor/components/",
+          "Inside vendor/components/",
+          "Inside vendor/"
+        ],
+        "answer": "Inside js/components/"
+      },
+      {
+        "quest": "What is Babel?",
+        "choices": [
+          "A transpiler.",
+          "An interpreter",
+          "A Compiler",
+          "A Compiler and An interpreter"
+        ],
+        "answer": "A Compiler and An interpreter"
+      }
+    
+  ]
+}
