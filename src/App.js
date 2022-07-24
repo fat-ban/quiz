@@ -17,8 +17,11 @@ function App() {
       <Typography>
       <Title  type="secondary" style={{fontSize:"35px"}}>Quiz ReactJs</Title>
       </Typography>
-      
+      <div className="questions-section">
       <Questions data={data}/>
+      </div>
+      
+      
       
     </div>
   );

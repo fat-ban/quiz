@@ -1,3 +1,4 @@
+//import { Divider } from 'antd'
 import React from 'react'
 
 //import {  Table} from 'antd';
@@ -8,13 +9,16 @@ const Resume = ({scoreCounter,questions}) => {
 console.log(questions)
     
   return (
-    <>
-        <div className="header-resume">
-          <h1>Resume</h1> 
-          <h3>{scoreCounter}</h3>
-        </div>
+    <div className='resume'>
+        
           <div className="container-resume">
-            
+          <div className="header-resume">
+          <h1>Score</h1> 
+          
+          <div className='score'>
+          <p>{scoreCounter} / {questions.length}</p>
+          </div>
+        </div>
             <div className="questions">
                 <div className="header-tab">
                 <h3>Questions</h3>
@@ -56,7 +60,7 @@ console.log(questions)
           </div>
           
 
-    </>
+    </div>
     
   )
 }
