@@ -1,11 +1,13 @@
 import React from "react"
+import { BrowserRouter as Router,Routes,Route } from "react-router-dom";
 import './App.css';
-import Questions from './components/Questions';
+
 import data from './data/data.json'
+import Home from "./pages/Home";
 
-import { Typography } from 'antd';
 
-const { Title } = Typography;
+
+
 
 
 function App() {
@@ -13,17 +15,15 @@ function App() {
   //const [lastQuest, setLastQuest] = useState(10)
  
   return (
-    <div className="App">
-      <Typography>
-      <Title  type="secondary" style={{fontSize:"35px"}}>Quiz ReactJs</Title>
-      </Typography>
-      <div className="questions-section">
-      <Questions data={data}/>
-      </div>
-      
-      
-      
-    </div>
+    <Router>
+    {/*<div className="App">
+      <Home data={data}/>
+  </div>*/}
+    <Routes>
+      <Route exact path={'/'} element={<Home data={data}/>}/>
+      <Route path={'/home'} element={<Home data={data}/>}/>
+    </Routes>
+    </Router>
   );
 }
 

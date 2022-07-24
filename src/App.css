@@ -88,20 +88,31 @@ padding: 20px;
 .header-resume{
   display:flex;
   flex-direction: row;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
   /*margin-top: 180px;*/
   /*height: 90vh;*/
 }
-.header-resume h3{
+/*.header-resume h3{
   font-size: 20px;
   padding-right: 5px;
  
-}
+}*/
 .score{
+  /*display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;*/
   padding: 20px;
   font-size: 30px;
   font-weight: 300;
+  width: 100%;
+
+}
+Button{
+  padding: 6px;
+  border-radius: 20px;
+  
 }
 /*.resume-quest{
 display:grid;
