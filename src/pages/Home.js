@@ -1,23 +1,27 @@
-import React from 'react'
-import Questions from '../components/Questions';
-import { Typography } from 'antd/lib';
+import React from "react";
+import Questions from "../components/Questions";
+import { Typography } from "antd/lib";
 import { ToastContainer } from "react-toastify";
 
 const { Title } = Typography;
 
-
-const Home = ({data}) => {
+const Home = ({ data }) => {
   return (
     <>
-    <Typography>
-      <Title  type="secondary" style={{fontSize:"35px"}}>Quiz ReactJs</Title>
+      <Typography>
+        <Title
+          type="secondary"
+          style={{ fontSize: "35px", textAlign: "center", margin: 15 }}
+        >
+          Quiz ReactJs
+        </Title>
       </Typography>
       <div className="questions-section">
-      <Questions data={data}/>
+        <Questions data={data} />
       </div>
-      <ToastContainer/>
+      <ToastContainer />
     </>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

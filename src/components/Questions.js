@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 
-import { toast } from 'react-toastify';
-  import 'react-toastify/dist/ReactToastify.css';
-  import "antd/dist/antd.css";
-import { Button } from 'antd';
-import Resume from "./Resume"
-
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import "antd/dist/antd.css";
+import { Button } from "antd";
+import Resume from "./Resume";
+import Answer from "./Answer";
 
 const Questions = ({ data }) => {
   const [questions, setQuestions] = useState(data);
@@ -14,33 +14,30 @@ const Questions = ({ data }) => {
   const [scoreCounter, setScoreCounter] = useState(0);
   const [disabledButton, setDisabledButton] = useState(true);
   const [responseQuest, setResponseQuest] = useState(false);
-  //state 
-  //const [choiceAnswer, setChoiceAnswer] = useState([])
-  //const [clickAnswer, setClickAnswer] = useState(false)
+  const [keepScore, setKeepScore] = useState(false);
+  const [changeClass, setChangeClass] = useState(false);
 
-  //console.log(questions.data[counterQuest].choices);
   console.log(testResponse);
   //console.log(questions.data[9].answer);
 
-   useEffect(() => {
-    console.log(scoreCounter)
+  useEffect(() => {
+    console.log(scoreCounter);
   }, [scoreCounter]);
 
   const updateScore = () => {
     console.log("updateScore");
-     setScoreCounter(scoreCounter + 1)
+    !keepScore && setScoreCounter(scoreCounter + 1);
   };
 
   const handleClick = (choice) => {
     setDisabledButton(false);
-    //setChoiceAnswer(choiceAnswer.push(choice))
-    
-    //setTestResponse(`${{choice} === questions.data[counterQuest].answer}`)
+    setKeepScore(true);
+    //setChangeClass(true)
     if (choice === questions.data[counterQuest].answer) {
       setTestResponse(true);
-      updateScore()
+      updateScore();
       //toastify succuss
-      toast.success('True Answer', {
+      toast.success("True Answer", {
         position: "top-right",
         autoClose: 2000,
         hideProgressBar: false,
@@ -48,10 +45,10 @@ const Questions = ({ data }) => {
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
-        });
-    }else{
-      setTestResponse(false)
-      toast.warn('false Answer', {
+      });
+    } else {
+      setTestResponse(false);
+      toast.warn("false Answer", {
         position: "top-right",
         autoClose: 2000,
         hideProgressBar: false,
@@ -59,27 +56,22 @@ const Questions = ({ data }) => {
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
-        });
-        //get choice false answer to display in the resume component
+      });
+      //get choice false answer to display in the resume component
     }
-
-    //console.log(choiceAnswer)
-    
-    setCounterQuest(counterQuest + 1);
-    //test if i click on the button response
-    setResponseQuest(true);
-    //)
+  
   };
   console.log(testResponse);
 
-  //const scoreChange=()=>{
-  //const score=testResponse ? ():()
-
-  //}
   const handleClickNextQuestion = () => {
     // e.preventDefault()
     console.log("nextQuestion");
-    responseQuest && setCounterQuest(counterQuest + 1);
+    setResponseQuest(true);
+    setKeepScore(false);
+    setCounterQuest(counterQuest + 1);
+
+    setDisabledButton(true);
+    //setChangeClass(true)
     //setClickAnswer(false)
   };
 
@@ -87,7 +79,6 @@ const Questions = ({ data }) => {
     <div className="container">
       {counterQuest < 10 ? (
         <div className="quiz-container">
-          {/* {questions.data.map((item, index) => (*/}
           <div
             // key={index}
             className="card-quest"
@@ -96,28 +87,39 @@ const Questions = ({ data }) => {
               <h2>
                 Question {counterQuest + 1}/{questions.data.length}
               </h2>
-              
             </div>
 
             <div className="question">
               <h3>{questions.data[counterQuest].quest}</h3>
             </div>
             <div className="choice">
-              {questions.data[counterQuest].choices.map((choice, index) => (
+              {/*{questions.data[counterQuest].choices.map((choice, index) => (
                 <button
                   type="text"
-                  className="choice-btn" //{clickAnswer ?("clickAnswer_color  choice-btn"): ("choice-btn")}
+                  className={
+                    changeClass
+                      ? "clickAnswer_color   choice-btn"
+                      : "choice-btn"
+                  } //{clickAnswer ?("clickAnswer_color  choice-btn"): ("choice-btn")}
                   key={index}
+                  //onClick={() => handleClick(choice)}
                   onClick={() => handleClick(choice)}
                 >
                   {" "}
                   {choice}
                 </button>
-              ))}
+                ))}*/}
+                <Answer 
+                questions={questions}
+                counterQuest={counterQuest}
+                changeClass={changeClass}
+                handleClick={handleClick}
+                />
               <Button
                 type="submit"
                 onClick={handleClickNextQuestion}
                 disabled={disabledButton}
+                style={{backgroundColor:"#8C8C8C",color:"#fff",padding:"7px 20px",fontSize:"20px"}}
               >
                 Next
               </Button>
@@ -128,16 +130,13 @@ const Questions = ({ data }) => {
         </div>
       ) : (
         <div className="section-resume">
-          {" "}
-          {scoreCounter > 5 && <h2>Congradulation</h2>}
           
-          <Resume 
-          scoreCounter={scoreCounter}
-          setScoreCounter={setScoreCounter}
-          questions={questions.data}
-          setCounterQuest={setCounterQuest}
+          <Resume
+            scoreCounter={scoreCounter}
+            setScoreCounter={setScoreCounter}
+            questions={questions.data}
+            setCounterQuest={setCounterQuest}
           />
-          
         </div>
       )}
     </div>

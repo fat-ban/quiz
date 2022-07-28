@@ -3,6 +3,7 @@ import React from "react";
 import {useNavigate} from "react-router-dom"
 import "antd/dist/antd.css";
 import {  Button} from 'antd/lib';
+import {CaretRightOutlined,CheckOutlined,TrophyOutlined  } from '@ant-design/icons'
 
 
 
@@ -20,7 +21,9 @@ const handleResetQuiz=(()=>{
 
   return (
     <div className="resume">
+     
       <div className="container-resume">
+      {scoreCounter > 5 && <><TrophyOutlined style={{fontSize:"50px"}}/><h2>Congratulations</h2></>}
         <div className="header-resume">
           <h1>Score</h1>
 
@@ -41,8 +44,8 @@ const handleResetQuiz=(()=>{
           <div className="tab-container">
             {questions.map((item, index) => (
               <div className="row-quest-answ">
-                <h4>{item.quest}</h4>
-                <h4>{item.answer}</h4>
+                <h4><CaretRightOutlined style={{color :"#5ba977" , fontSize:"20px"}}/>{item.quest}</h4>
+                <h4><CheckOutlined style={{color :"#5ba977" , fontSize:"20px"}}/>{item.answer}</h4>
               </div>
             ))}
           </div>
@@ -63,8 +66,10 @@ const handleResetQuiz=(()=>{
       </div>
       <Button 
       type="primary" 
-      style={{"margin":"9px","badding":"9px","fontSize":18}}
+      style={{"margin":"9px","padding":"9px","fontSize":18,borderRadius:"20px"}}
+      size="large"
       onClick={handleResetQuiz}
+      block
       >
         Repeat Quiz</Button>
     </div>
