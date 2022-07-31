@@ -16,7 +16,7 @@ const Questions = ({ data }) => {
   const [responseQuest, setResponseQuest] = useState(false);
   const [keepScore, setKeepScore] = useState(false);
   const [changeClass, setChangeClass] = useState(false);
-
+const [indexQuest, setIndexQuest] = useState([])
   console.log(testResponse);
   //console.log(questions.data[9].answer);
 
@@ -36,6 +36,11 @@ const Questions = ({ data }) => {
     if (choice === questions.data[counterQuest].answer) {
       setTestResponse(true);
       updateScore();
+      console.log((questions.data))
+      //console.log(questions.data.indexOf(data[counterQuest]))
+    console.log(counterQuest)
+      setIndexQuest([...indexQuest,counterQuest])
+      
       //toastify succuss
       toast.success("True Answer", {
         position: "top-right",
@@ -61,7 +66,7 @@ const Questions = ({ data }) => {
     }
   
   };
-  console.log(testResponse);
+  console.log(indexQuest);
 
   const handleClickNextQuestion = () => {
     // e.preventDefault()
@@ -69,6 +74,7 @@ const Questions = ({ data }) => {
     setResponseQuest(true);
     setKeepScore(false);
     setCounterQuest(counterQuest + 1);
+
 
     setDisabledButton(true);
     //setChangeClass(true)
@@ -116,10 +122,15 @@ const Questions = ({ data }) => {
                 handleClick={handleClick}
                 />
               <Button
-                type="submit"
-                onClick={handleClickNextQuestion}
+                type="primary"
+                onClick={()=>handleClickNextQuestion(counterQuest)}
                 disabled={disabledButton}
-                style={{backgroundColor:"#8C8C8C",color:"#fff",padding:"7px 20px",fontSize:"20px"}}
+                //style={{//backgroundColor:"#8C8C8C",
+                //color:"#fff",
+                //padding:"5px 25px",
+                //fontSize:"18px",
+              //fontWeight:"400"
+              //}}
               >
                 Next
               </Button>

@@ -66,12 +66,14 @@ const handleResetQuiz=(()=>{
       </div>
       <Button 
       type="primary" 
-      style={{"margin":"9px","padding":"9px","fontSize":18,borderRadius:"20px"}}
+      className="btn-resume"
+      
       size="large"
       onClick={handleResetQuiz}
       block
       >
-        Repeat Quiz</Button>
+        Repeat Quiz
+        </Button>
     </div>
   );
 };
