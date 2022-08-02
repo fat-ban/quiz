@@ -190,6 +190,9 @@ justify-content:justify;
   border-radius: 20px;
   
 }
+.color-green{
+  background-color: rgb(65, 240, 89);
+}
 .row-quest-answ h4{
   font-size: 15px;
   font-weight: 500;

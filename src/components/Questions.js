@@ -16,7 +16,7 @@ const Questions = ({ data }) => {
   const [responseQuest, setResponseQuest] = useState(false);
   const [keepScore, setKeepScore] = useState(false);
   const [changeClass, setChangeClass] = useState(false);
-const [indexQuest, setIndexQuest] = useState([])
+  const [indexQuest, setIndexQuest] = useState([]);
   console.log(testResponse);
   //console.log(questions.data[9].answer);
 
@@ -36,11 +36,11 @@ const [indexQuest, setIndexQuest] = useState([])
     if (choice === questions.data[counterQuest].answer) {
       setTestResponse(true);
       updateScore();
-      console.log((questions.data))
+      console.log(questions.data);
       //console.log(questions.data.indexOf(data[counterQuest]))
-    console.log(counterQuest)
-      setIndexQuest([...indexQuest,counterQuest])
-      
+      console.log(counterQuest);
+      setIndexQuest([...indexQuest, counterQuest]);
+
       //toastify succuss
       toast.success("True Answer", {
         position: "top-right",
@@ -64,7 +64,6 @@ const [indexQuest, setIndexQuest] = useState([])
       });
       //get choice false answer to display in the resume component
     }
-  
   };
   console.log(indexQuest);
 
@@ -74,7 +73,6 @@ const [indexQuest, setIndexQuest] = useState([])
     setResponseQuest(true);
     setKeepScore(false);
     setCounterQuest(counterQuest + 1);
-
 
     setDisabledButton(true);
     //setChangeClass(true)
@@ -99,38 +97,18 @@ const [indexQuest, setIndexQuest] = useState([])
               <h3>{questions.data[counterQuest].quest}</h3>
             </div>
             <div className="choice">
-              {/*{questions.data[counterQuest].choices.map((choice, index) => (
-                <button
-                  type="text"
-                  className={
-                    changeClass
-                      ? "clickAnswer_color   choice-btn"
-                      : "choice-btn"
-                  } //{clickAnswer ?("clickAnswer_color  choice-btn"): ("choice-btn")}
-                  key={index}
-                  //onClick={() => handleClick(choice)}
-                  onClick={() => handleClick(choice)}
-                >
-                  {" "}
-                  {choice}
-                </button>
-                ))}*/}
-                <Answer 
+              
+              <Answer
                 questions={questions}
                 counterQuest={counterQuest}
                 changeClass={changeClass}
                 handleClick={handleClick}
-                />
+              />
               <Button
                 type="primary"
-                onClick={()=>handleClickNextQuestion(counterQuest)}
+                onClick={() => handleClickNextQuestion(counterQuest)}
                 disabled={disabledButton}
-                //style={{//backgroundColor:"#8C8C8C",
-                //color:"#fff",
-                //padding:"5px 25px",
-                //fontSize:"18px",
-              //fontWeight:"400"
-              //}}
+                
               >
                 Next
               </Button>
@@ -141,12 +119,13 @@ const [indexQuest, setIndexQuest] = useState([])
         </div>
       ) : (
         <div className="section-resume">
-          
           <Resume
             scoreCounter={scoreCounter}
             setScoreCounter={setScoreCounter}
             questions={questions.data}
             setCounterQuest={setCounterQuest}
+            indexQuest={indexQuest}
+            setIndexQuest={setIndexQuest}
           />
         </div>
       )}
